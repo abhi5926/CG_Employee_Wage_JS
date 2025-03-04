@@ -137,3 +137,24 @@ function totalWagesMap(totalWage, dailyWage) {
 
 empDailyWageMap.set(totalWorkingDays, empDailyWageArr.reduce(totalWagesMap, 0));
 console.log("Emp Wage Map totalHrs : " + Array.from(empDailyWageArr.keys()).reduce(totalWagesMap, 0));
+
+// UC 9 
+const findTotal = (totalVal, dailyVal) => {
+    return totalVal + dailyVal;
+}
+let count = 0;
+let totalHours = Array.from(empDailyWageMap.values()).reduce(findTotal, 0);
+let totalSalary = empDailyWageArr.filter(dailyWage => dailyWage > 0).length * WAGE_PER_HOUR;
+console.log("UC 9A - Emp Wage with Arrow : " + " Total Hours : " + totalHours + " Total Wages : " + totalSalary);
+
+let nonWorkingDays = new Array();
+let partWorkingDays = new Array();
+let fullWorkingDays = new Array();
+empDailyWageArr.forEach((dailyWage, day) => {
+    if (dailyWage == 0) nonWorkingDays.push(day);
+    else if (dailyWage == 4) partWorkingDays.push(day);
+    else fullWorkingDays.push(day);
+});
+console.log("Non Working Days : " + nonWorkingDays);
+console.log("Part Working Days : " + partWorkingDays);
+console.log("Full Working Days : " + fullWorkingDays);

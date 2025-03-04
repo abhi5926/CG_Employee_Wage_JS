@@ -158,3 +158,24 @@ empDailyWageArr.forEach((dailyWage, day) => {
 console.log("Non Working Days : " + nonWorkingDays);
 console.log("Part Working Days : " + partWorkingDays);
 console.log("Full Working Days : " + fullWorkingDays);
+
+// UC 10 
+let empDailyHrsAndWageArr = new Array();
+totalEmpHrs = 0;
+totalWorkingDays = 0;
+
+while (totalEmpHrs <= MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS) {
+    totalWorkingDays++;
+    empCheck = Math.floor(Math.random() * 10) % 3;
+    empHrs = getWorkingHours(empCheck);
+    totalEmpHrs += empHrs;
+    empDailyHrsAndWageArr.push({
+        dayNum: totalWorkingDays,
+        dailyHours: empHrs,
+        dailyWage: calcDailyWage(empHrs),
+        toString() {
+            return '\nDay' + this.dayNum + ' => Working Hours is ' + this.dailyHours + ' And Wage Earned = ' + this.dailyWage
+        },
+    });
+}
+console.log("UC 10 Showing Daily Hours Worked and Wage Earned : " + empDailyHrsAndWageArr);

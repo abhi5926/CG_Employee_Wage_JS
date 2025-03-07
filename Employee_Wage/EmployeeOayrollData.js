@@ -26,6 +26,43 @@ class EmployeePayrollData {
         else throw 'Name is Incorrect!';
     }
 
+    get id() { return this._id; }
+    set id(id) 
+    { 
+        if (id <= 0) {
+            throw new Error("ID should be a positive number");
+        }
+        this._id = id;
+    }
+
+    get salary() { return this._salary; }
+    set salary(salary) 
+    { 
+        if (salary <= 0) {
+            throw new Error("Salary should be a positive number");
+        }
+        this._salary = salary;
+    }
+
+    get gender() { return this.gender; }
+    set gender(gender)
+    {
+        if (gender !== "M" && gender !== "F") {
+            throw new Error("Gender should be either Male or Female");
+        }
+        this.gender=gender;
+    }
+
+    get startDate() { return this.startDate; }
+    set startDate(startDate)
+    {
+        let dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+        if (!date.match(dateRegex)) {
+            throw new Error("Date should be in the format YYYY-MM-DD");
+        }
+        this.startDate=startDate;
+    }
+
     // method
     toString()
     {
@@ -46,5 +83,14 @@ class EmployeePayrollData {
     {
         console.error(e);
     }
-    let newEmployeePayrollData = new EmployeePayrollData(1, "Terrisa", 3000000, "F", new Date());
-    console.log(newEmployeePayrollData.toString());
+    try
+    {
+        let newEmployeePayrollData = new EmployeePayrollData(1, "Terrisa", 3000000, "F", new Date());
+        console.log(newEmployeePayrollData.toString());
+    }
+    catch(e)
+    {
+        console.error(e);
+    }
+    
+    
